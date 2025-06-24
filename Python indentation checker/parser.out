@@ -1,0 +1,668 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    COMMA
+
+Grammar
+
+Rule 0     S' -> program
+Rule 1     program -> statement_list
+Rule 2     statement_list -> statement
+Rule 3     statement_list -> statement_list statement
+Rule 4     statement -> simple_stmt NEWLINE
+Rule 5     statement -> compound_stmt
+Rule 6     statement -> NEWLINE
+Rule 7     simple_stmt -> assignment
+Rule 8     simple_stmt -> print_stmt
+Rule 9     assignment -> NAME EQUALS expr
+Rule 10    print_stmt -> PRINT LPAREN expr RPAREN
+Rule 11    expr -> NAME
+Rule 12    expr -> NUMBER
+Rule 13    expr -> expr EQEQ expr
+Rule 14    compound_stmt -> IF expr COLON NEWLINE INDENT statement_list DEDENT
+Rule 15    compound_stmt -> ELSE COLON NEWLINE INDENT statement_list DEDENT
+Rule 16    compound_stmt -> FOR NAME IN RANGE LPAREN NUMBER RPAREN COLON NEWLINE INDENT statement_list DEDENT
+
+Terminals, with rules where they appear
+
+COLON                : 14 15 16
+COMMA                : 
+DEDENT               : 14 15 16
+ELSE                 : 15
+EQEQ                 : 13
+EQUALS               : 9
+FOR                  : 16
+IF                   : 14
+IN                   : 16
+INDENT               : 14 15 16
+LPAREN               : 10 16
+NAME                 : 9 11 16
+NEWLINE              : 4 6 14 15 16
+NUMBER               : 12 16
+PRINT                : 10
+RANGE                : 16
+RPAREN               : 10 16
+error                : 
+
+Nonterminals, with rules where they appear
+
+assignment           : 7
+compound_stmt        : 5
+expr                 : 9 10 13 13 14
+print_stmt           : 8
+program              : 0
+simple_stmt          : 4
+statement            : 2 3
+statement_list       : 1 3 14 15 16
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . program
+    (1) program -> . statement_list
+    (2) statement_list -> . statement
+    (3) statement_list -> . statement_list statement
+    (4) statement -> . simple_stmt NEWLINE
+    (5) statement -> . compound_stmt
+    (6) statement -> . NEWLINE
+    (7) simple_stmt -> . assignment
+    (8) simple_stmt -> . print_stmt
+    (14) compound_stmt -> . IF expr COLON NEWLINE INDENT statement_list DEDENT
+    (15) compound_stmt -> . ELSE COLON NEWLINE INDENT statement_list DEDENT
+    (16) compound_stmt -> . FOR NAME IN RANGE LPAREN NUMBER RPAREN COLON NEWLINE INDENT statement_list DEDENT
+    (9) assignment -> . NAME EQUALS expr
+    (10) print_stmt -> . PRINT LPAREN expr RPAREN
+
+    NEWLINE         shift and go to state 5
+    IF              shift and go to state 9
+    ELSE            shift and go to state 10
+    FOR             shift and go to state 11
+    NAME            shift and go to state 12
+    PRINT           shift and go to state 13
+
+    program                        shift and go to state 1
+    statement_list                 shift and go to state 2
+    statement                      shift and go to state 3
+    simple_stmt                    shift and go to state 4
+    compound_stmt                  shift and go to state 6
+    assignment                     shift and go to state 7
+    print_stmt                     shift and go to state 8
+
+state 1
+
+    (0) S' -> program .
+
+
+
+state 2
+
+    (1) program -> statement_list .
+    (3) statement_list -> statement_list . statement
+    (4) statement -> . simple_stmt NEWLINE
+    (5) statement -> . compound_stmt
+    (6) statement -> . NEWLINE
+    (7) simple_stmt -> . assignment
+    (8) simple_stmt -> . print_stmt
+    (14) compound_stmt -> . IF expr COLON NEWLINE INDENT statement_list DEDENT
+    (15) compound_stmt -> . ELSE COLON NEWLINE INDENT statement_list DEDENT
+    (16) compound_stmt -> . FOR NAME IN RANGE LPAREN NUMBER RPAREN COLON NEWLINE INDENT statement_list DEDENT
+    (9) assignment -> . NAME EQUALS expr
+    (10) print_stmt -> . PRINT LPAREN expr RPAREN
+
+    $end            reduce using rule 1 (program -> statement_list .)
+    NEWLINE         shift and go to state 5
+    IF              shift and go to state 9
+    ELSE            shift and go to state 10
+    FOR             shift and go to state 11
+    NAME            shift and go to state 12
+    PRINT           shift and go to state 13
+
+    statement                      shift and go to state 14
+    simple_stmt                    shift and go to state 4
+    compound_stmt                  shift and go to state 6
+    assignment                     shift and go to state 7
+    print_stmt                     shift and go to state 8
+
+state 3
+
+    (2) statement_list -> statement .
+
+    NEWLINE         reduce using rule 2 (statement_list -> statement .)
+    IF              reduce using rule 2 (statement_list -> statement .)
+    ELSE            reduce using rule 2 (statement_list -> statement .)
+    FOR             reduce using rule 2 (statement_list -> statement .)
+    NAME            reduce using rule 2 (statement_list -> statement .)
+    PRINT           reduce using rule 2 (statement_list -> statement .)
+    $end            reduce using rule 2 (statement_list -> statement .)
+    DEDENT          reduce using rule 2 (statement_list -> statement .)
+
+
+state 4
+
+    (4) statement -> simple_stmt . NEWLINE
+
+    NEWLINE         shift and go to state 15
+
+
+state 5
+
+    (6) statement -> NEWLINE .
+
+    NEWLINE         reduce using rule 6 (statement -> NEWLINE .)
+    IF              reduce using rule 6 (statement -> NEWLINE .)
+    ELSE            reduce using rule 6 (statement -> NEWLINE .)
+    FOR             reduce using rule 6 (statement -> NEWLINE .)
+    NAME            reduce using rule 6 (statement -> NEWLINE .)
+    PRINT           reduce using rule 6 (statement -> NEWLINE .)
+    $end            reduce using rule 6 (statement -> NEWLINE .)
+    DEDENT          reduce using rule 6 (statement -> NEWLINE .)
+
+
+state 6
+
+    (5) statement -> compound_stmt .
+
+    NEWLINE         reduce using rule 5 (statement -> compound_stmt .)
+    IF              reduce using rule 5 (statement -> compound_stmt .)
+    ELSE            reduce using rule 5 (statement -> compound_stmt .)
+    FOR             reduce using rule 5 (statement -> compound_stmt .)
+    NAME            reduce using rule 5 (statement -> compound_stmt .)
+    PRINT           reduce using rule 5 (statement -> compound_stmt .)
+    $end            reduce using rule 5 (statement -> compound_stmt .)
+    DEDENT          reduce using rule 5 (statement -> compound_stmt .)
+
+
+state 7
+
+    (7) simple_stmt -> assignment .
+
+    NEWLINE         reduce using rule 7 (simple_stmt -> assignment .)
+
+
+state 8
+
+    (8) simple_stmt -> print_stmt .
+
+    NEWLINE         reduce using rule 8 (simple_stmt -> print_stmt .)
+
+
+state 9
+
+    (14) compound_stmt -> IF . expr COLON NEWLINE INDENT statement_list DEDENT
+    (11) expr -> . NAME
+    (12) expr -> . NUMBER
+    (13) expr -> . expr EQEQ expr
+
+    NAME            shift and go to state 17
+    NUMBER          shift and go to state 18
+
+    expr                           shift and go to state 16
+
+state 10
+
+    (15) compound_stmt -> ELSE . COLON NEWLINE INDENT statement_list DEDENT
+
+    COLON           shift and go to state 19
+
+
+state 11
+
+    (16) compound_stmt -> FOR . NAME IN RANGE LPAREN NUMBER RPAREN COLON NEWLINE INDENT statement_list DEDENT
+
+    NAME            shift and go to state 20
+
+
+state 12
+
+    (9) assignment -> NAME . EQUALS expr
+
+    EQUALS          shift and go to state 21
+
+
+state 13
+
+    (10) print_stmt -> PRINT . LPAREN expr RPAREN
+
+    LPAREN          shift and go to state 22
+
+
+state 14
+
+    (3) statement_list -> statement_list statement .
+
+    NEWLINE         reduce using rule 3 (statement_list -> statement_list statement .)
+    IF              reduce using rule 3 (statement_list -> statement_list statement .)
+    ELSE            reduce using rule 3 (statement_list -> statement_list statement .)
+    FOR             reduce using rule 3 (statement_list -> statement_list statement .)
+    NAME            reduce using rule 3 (statement_list -> statement_list statement .)
+    PRINT           reduce using rule 3 (statement_list -> statement_list statement .)
+    $end            reduce using rule 3 (statement_list -> statement_list statement .)
+    DEDENT          reduce using rule 3 (statement_list -> statement_list statement .)
+
+
+state 15
+
+    (4) statement -> simple_stmt NEWLINE .
+
+    NEWLINE         reduce using rule 4 (statement -> simple_stmt NEWLINE .)
+    IF              reduce using rule 4 (statement -> simple_stmt NEWLINE .)
+    ELSE            reduce using rule 4 (statement -> simple_stmt NEWLINE .)
+    FOR             reduce using rule 4 (statement -> simple_stmt NEWLINE .)
+    NAME            reduce using rule 4 (statement -> simple_stmt NEWLINE .)
+    PRINT           reduce using rule 4 (statement -> simple_stmt NEWLINE .)
+    $end            reduce using rule 4 (statement -> simple_stmt NEWLINE .)
+    DEDENT          reduce using rule 4 (statement -> simple_stmt NEWLINE .)
+
+
+state 16
+
+    (14) compound_stmt -> IF expr . COLON NEWLINE INDENT statement_list DEDENT
+    (13) expr -> expr . EQEQ expr
+
+    COLON           shift and go to state 23
+    EQEQ            shift and go to state 24
+
+
+state 17
+
+    (11) expr -> NAME .
+
+    COLON           reduce using rule 11 (expr -> NAME .)
+    EQEQ            reduce using rule 11 (expr -> NAME .)
+    NEWLINE         reduce using rule 11 (expr -> NAME .)
+    RPAREN          reduce using rule 11 (expr -> NAME .)
+
+
+state 18
+
+    (12) expr -> NUMBER .
+
+    COLON           reduce using rule 12 (expr -> NUMBER .)
+    EQEQ            reduce using rule 12 (expr -> NUMBER .)
+    NEWLINE         reduce using rule 12 (expr -> NUMBER .)
+    RPAREN          reduce using rule 12 (expr -> NUMBER .)
+
+
+state 19
+
+    (15) compound_stmt -> ELSE COLON . NEWLINE INDENT statement_list DEDENT
+
+    NEWLINE         shift and go to state 25
+
+
+state 20
+
+    (16) compound_stmt -> FOR NAME . IN RANGE LPAREN NUMBER RPAREN COLON NEWLINE INDENT statement_list DEDENT
+
+    IN              shift and go to state 26
+
+
+state 21
+
+    (9) assignment -> NAME EQUALS . expr
+    (11) expr -> . NAME
+    (12) expr -> . NUMBER
+    (13) expr -> . expr EQEQ expr
+
+    NAME            shift and go to state 17
+    NUMBER          shift and go to state 18
+
+    expr                           shift and go to state 27
+
+state 22
+
+    (10) print_stmt -> PRINT LPAREN . expr RPAREN
+    (11) expr -> . NAME
+    (12) expr -> . NUMBER
+    (13) expr -> . expr EQEQ expr
+
+    NAME            shift and go to state 17
+    NUMBER          shift and go to state 18
+
+    expr                           shift and go to state 28
+
+state 23
+
+    (14) compound_stmt -> IF expr COLON . NEWLINE INDENT statement_list DEDENT
+
+    NEWLINE         shift and go to state 29
+
+
+state 24
+
+    (13) expr -> expr EQEQ . expr
+    (11) expr -> . NAME
+    (12) expr -> . NUMBER
+    (13) expr -> . expr EQEQ expr
+
+    NAME            shift and go to state 17
+    NUMBER          shift and go to state 18
+
+    expr                           shift and go to state 30
+
+state 25
+
+    (15) compound_stmt -> ELSE COLON NEWLINE . INDENT statement_list DEDENT
+
+    INDENT          shift and go to state 31
+
+
+state 26
+
+    (16) compound_stmt -> FOR NAME IN . RANGE LPAREN NUMBER RPAREN COLON NEWLINE INDENT statement_list DEDENT
+
+    RANGE           shift and go to state 32
+
+
+state 27
+
+    (9) assignment -> NAME EQUALS expr .
+    (13) expr -> expr . EQEQ expr
+
+    NEWLINE         reduce using rule 9 (assignment -> NAME EQUALS expr .)
+    EQEQ            shift and go to state 24
+
+
+state 28
+
+    (10) print_stmt -> PRINT LPAREN expr . RPAREN
+    (13) expr -> expr . EQEQ expr
+
+    RPAREN          shift and go to state 33
+    EQEQ            shift and go to state 24
+
+
+state 29
+
+    (14) compound_stmt -> IF expr COLON NEWLINE . INDENT statement_list DEDENT
+
+    INDENT          shift and go to state 34
+
+
+state 30
+
+    (13) expr -> expr EQEQ expr .
+    (13) expr -> expr . EQEQ expr
+
+  ! shift/reduce conflict for EQEQ resolved as shift
+    COLON           reduce using rule 13 (expr -> expr EQEQ expr .)
+    NEWLINE         reduce using rule 13 (expr -> expr EQEQ expr .)
+    RPAREN          reduce using rule 13 (expr -> expr EQEQ expr .)
+    EQEQ            shift and go to state 24
+
+  ! EQEQ            [ reduce using rule 13 (expr -> expr EQEQ expr .) ]
+
+
+state 31
+
+    (15) compound_stmt -> ELSE COLON NEWLINE INDENT . statement_list DEDENT
+    (2) statement_list -> . statement
+    (3) statement_list -> . statement_list statement
+    (4) statement -> . simple_stmt NEWLINE
+    (5) statement -> . compound_stmt
+    (6) statement -> . NEWLINE
+    (7) simple_stmt -> . assignment
+    (8) simple_stmt -> . print_stmt
+    (14) compound_stmt -> . IF expr COLON NEWLINE INDENT statement_list DEDENT
+    (15) compound_stmt -> . ELSE COLON NEWLINE INDENT statement_list DEDENT
+    (16) compound_stmt -> . FOR NAME IN RANGE LPAREN NUMBER RPAREN COLON NEWLINE INDENT statement_list DEDENT
+    (9) assignment -> . NAME EQUALS expr
+    (10) print_stmt -> . PRINT LPAREN expr RPAREN
+
+    NEWLINE         shift and go to state 5
+    IF              shift and go to state 9
+    ELSE            shift and go to state 10
+    FOR             shift and go to state 11
+    NAME            shift and go to state 12
+    PRINT           shift and go to state 13
+
+    statement_list                 shift and go to state 35
+    statement                      shift and go to state 3
+    simple_stmt                    shift and go to state 4
+    compound_stmt                  shift and go to state 6
+    assignment                     shift and go to state 7
+    print_stmt                     shift and go to state 8
+
+state 32
+
+    (16) compound_stmt -> FOR NAME IN RANGE . LPAREN NUMBER RPAREN COLON NEWLINE INDENT statement_list DEDENT
+
+    LPAREN          shift and go to state 36
+
+
+state 33
+
+    (10) print_stmt -> PRINT LPAREN expr RPAREN .
+
+    NEWLINE         reduce using rule 10 (print_stmt -> PRINT LPAREN expr RPAREN .)
+
+
+state 34
+
+    (14) compound_stmt -> IF expr COLON NEWLINE INDENT . statement_list DEDENT
+    (2) statement_list -> . statement
+    (3) statement_list -> . statement_list statement
+    (4) statement -> . simple_stmt NEWLINE
+    (5) statement -> . compound_stmt
+    (6) statement -> . NEWLINE
+    (7) simple_stmt -> . assignment
+    (8) simple_stmt -> . print_stmt
+    (14) compound_stmt -> . IF expr COLON NEWLINE INDENT statement_list DEDENT
+    (15) compound_stmt -> . ELSE COLON NEWLINE INDENT statement_list DEDENT
+    (16) compound_stmt -> . FOR NAME IN RANGE LPAREN NUMBER RPAREN COLON NEWLINE INDENT statement_list DEDENT
+    (9) assignment -> . NAME EQUALS expr
+    (10) print_stmt -> . PRINT LPAREN expr RPAREN
+
+    NEWLINE         shift and go to state 5
+    IF              shift and go to state 9
+    ELSE            shift and go to state 10
+    FOR             shift and go to state 11
+    NAME            shift and go to state 12
+    PRINT           shift and go to state 13
+
+    statement_list                 shift and go to state 37
+    statement                      shift and go to state 3
+    simple_stmt                    shift and go to state 4
+    compound_stmt                  shift and go to state 6
+    assignment                     shift and go to state 7
+    print_stmt                     shift and go to state 8
+
+state 35
+
+    (15) compound_stmt -> ELSE COLON NEWLINE INDENT statement_list . DEDENT
+    (3) statement_list -> statement_list . statement
+    (4) statement -> . simple_stmt NEWLINE
+    (5) statement -> . compound_stmt
+    (6) statement -> . NEWLINE
+    (7) simple_stmt -> . assignment
+    (8) simple_stmt -> . print_stmt
+    (14) compound_stmt -> . IF expr COLON NEWLINE INDENT statement_list DEDENT
+    (15) compound_stmt -> . ELSE COLON NEWLINE INDENT statement_list DEDENT
+    (16) compound_stmt -> . FOR NAME IN RANGE LPAREN NUMBER RPAREN COLON NEWLINE INDENT statement_list DEDENT
+    (9) assignment -> . NAME EQUALS expr
+    (10) print_stmt -> . PRINT LPAREN expr RPAREN
+
+    DEDENT          shift and go to state 38
+    NEWLINE         shift and go to state 5
+    IF              shift and go to state 9
+    ELSE            shift and go to state 10
+    FOR             shift and go to state 11
+    NAME            shift and go to state 12
+    PRINT           shift and go to state 13
+
+    statement                      shift and go to state 14
+    simple_stmt                    shift and go to state 4
+    compound_stmt                  shift and go to state 6
+    assignment                     shift and go to state 7
+    print_stmt                     shift and go to state 8
+
+state 36
+
+    (16) compound_stmt -> FOR NAME IN RANGE LPAREN . NUMBER RPAREN COLON NEWLINE INDENT statement_list DEDENT
+
+    NUMBER          shift and go to state 39
+
+
+state 37
+
+    (14) compound_stmt -> IF expr COLON NEWLINE INDENT statement_list . DEDENT
+    (3) statement_list -> statement_list . statement
+    (4) statement -> . simple_stmt NEWLINE
+    (5) statement -> . compound_stmt
+    (6) statement -> . NEWLINE
+    (7) simple_stmt -> . assignment
+    (8) simple_stmt -> . print_stmt
+    (14) compound_stmt -> . IF expr COLON NEWLINE INDENT statement_list DEDENT
+    (15) compound_stmt -> . ELSE COLON NEWLINE INDENT statement_list DEDENT
+    (16) compound_stmt -> . FOR NAME IN RANGE LPAREN NUMBER RPAREN COLON NEWLINE INDENT statement_list DEDENT
+    (9) assignment -> . NAME EQUALS expr
+    (10) print_stmt -> . PRINT LPAREN expr RPAREN
+
+    DEDENT          shift and go to state 40
+    NEWLINE         shift and go to state 5
+    IF              shift and go to state 9
+    ELSE            shift and go to state 10
+    FOR             shift and go to state 11
+    NAME            shift and go to state 12
+    PRINT           shift and go to state 13
+
+    statement                      shift and go to state 14
+    simple_stmt                    shift and go to state 4
+    compound_stmt                  shift and go to state 6
+    assignment                     shift and go to state 7
+    print_stmt                     shift and go to state 8
+
+state 38
+
+    (15) compound_stmt -> ELSE COLON NEWLINE INDENT statement_list DEDENT .
+
+    NEWLINE         reduce using rule 15 (compound_stmt -> ELSE COLON NEWLINE INDENT statement_list DEDENT .)
+    IF              reduce using rule 15 (compound_stmt -> ELSE COLON NEWLINE INDENT statement_list DEDENT .)
+    ELSE            reduce using rule 15 (compound_stmt -> ELSE COLON NEWLINE INDENT statement_list DEDENT .)
+    FOR             reduce using rule 15 (compound_stmt -> ELSE COLON NEWLINE INDENT statement_list DEDENT .)
+    NAME            reduce using rule 15 (compound_stmt -> ELSE COLON NEWLINE INDENT statement_list DEDENT .)
+    PRINT           reduce using rule 15 (compound_stmt -> ELSE COLON NEWLINE INDENT statement_list DEDENT .)
+    $end            reduce using rule 15 (compound_stmt -> ELSE COLON NEWLINE INDENT statement_list DEDENT .)
+    DEDENT          reduce using rule 15 (compound_stmt -> ELSE COLON NEWLINE INDENT statement_list DEDENT .)
+
+
+state 39
+
+    (16) compound_stmt -> FOR NAME IN RANGE LPAREN NUMBER . RPAREN COLON NEWLINE INDENT statement_list DEDENT
+
+    RPAREN          shift and go to state 41
+
+
+state 40
+
+    (14) compound_stmt -> IF expr COLON NEWLINE INDENT statement_list DEDENT .
+
+    NEWLINE         reduce using rule 14 (compound_stmt -> IF expr COLON NEWLINE INDENT statement_list DEDENT .)
+    IF              reduce using rule 14 (compound_stmt -> IF expr COLON NEWLINE INDENT statement_list DEDENT .)
+    ELSE            reduce using rule 14 (compound_stmt -> IF expr COLON NEWLINE INDENT statement_list DEDENT .)
+    FOR             reduce using rule 14 (compound_stmt -> IF expr COLON NEWLINE INDENT statement_list DEDENT .)
+    NAME            reduce using rule 14 (compound_stmt -> IF expr COLON NEWLINE INDENT statement_list DEDENT .)
+    PRINT           reduce using rule 14 (compound_stmt -> IF expr COLON NEWLINE INDENT statement_list DEDENT .)
+    $end            reduce using rule 14 (compound_stmt -> IF expr COLON NEWLINE INDENT statement_list DEDENT .)
+    DEDENT          reduce using rule 14 (compound_stmt -> IF expr COLON NEWLINE INDENT statement_list DEDENT .)
+
+
+state 41
+
+    (16) compound_stmt -> FOR NAME IN RANGE LPAREN NUMBER RPAREN . COLON NEWLINE INDENT statement_list DEDENT
+
+    COLON           shift and go to state 42
+
+
+state 42
+
+    (16) compound_stmt -> FOR NAME IN RANGE LPAREN NUMBER RPAREN COLON . NEWLINE INDENT statement_list DEDENT
+
+    NEWLINE         shift and go to state 43
+
+
+state 43
+
+    (16) compound_stmt -> FOR NAME IN RANGE LPAREN NUMBER RPAREN COLON NEWLINE . INDENT statement_list DEDENT
+
+    INDENT          shift and go to state 44
+
+
+state 44
+
+    (16) compound_stmt -> FOR NAME IN RANGE LPAREN NUMBER RPAREN COLON NEWLINE INDENT . statement_list DEDENT
+    (2) statement_list -> . statement
+    (3) statement_list -> . statement_list statement
+    (4) statement -> . simple_stmt NEWLINE
+    (5) statement -> . compound_stmt
+    (6) statement -> . NEWLINE
+    (7) simple_stmt -> . assignment
+    (8) simple_stmt -> . print_stmt
+    (14) compound_stmt -> . IF expr COLON NEWLINE INDENT statement_list DEDENT
+    (15) compound_stmt -> . ELSE COLON NEWLINE INDENT statement_list DEDENT
+    (16) compound_stmt -> . FOR NAME IN RANGE LPAREN NUMBER RPAREN COLON NEWLINE INDENT statement_list DEDENT
+    (9) assignment -> . NAME EQUALS expr
+    (10) print_stmt -> . PRINT LPAREN expr RPAREN
+
+    NEWLINE         shift and go to state 5
+    IF              shift and go to state 9
+    ELSE            shift and go to state 10
+    FOR             shift and go to state 11
+    NAME            shift and go to state 12
+    PRINT           shift and go to state 13
+
+    statement_list                 shift and go to state 45
+    statement                      shift and go to state 3
+    simple_stmt                    shift and go to state 4
+    compound_stmt                  shift and go to state 6
+    assignment                     shift and go to state 7
+    print_stmt                     shift and go to state 8
+
+state 45
+
+    (16) compound_stmt -> FOR NAME IN RANGE LPAREN NUMBER RPAREN COLON NEWLINE INDENT statement_list . DEDENT
+    (3) statement_list -> statement_list . statement
+    (4) statement -> . simple_stmt NEWLINE
+    (5) statement -> . compound_stmt
+    (6) statement -> . NEWLINE
+    (7) simple_stmt -> . assignment
+    (8) simple_stmt -> . print_stmt
+    (14) compound_stmt -> . IF expr COLON NEWLINE INDENT statement_list DEDENT
+    (15) compound_stmt -> . ELSE COLON NEWLINE INDENT statement_list DEDENT
+    (16) compound_stmt -> . FOR NAME IN RANGE LPAREN NUMBER RPAREN COLON NEWLINE INDENT statement_list DEDENT
+    (9) assignment -> . NAME EQUALS expr
+    (10) print_stmt -> . PRINT LPAREN expr RPAREN
+
+    DEDENT          shift and go to state 46
+    NEWLINE         shift and go to state 5
+    IF              shift and go to state 9
+    ELSE            shift and go to state 10
+    FOR             shift and go to state 11
+    NAME            shift and go to state 12
+    PRINT           shift and go to state 13
+
+    statement                      shift and go to state 14
+    simple_stmt                    shift and go to state 4
+    compound_stmt                  shift and go to state 6
+    assignment                     shift and go to state 7
+    print_stmt                     shift and go to state 8
+
+state 46
+
+    (16) compound_stmt -> FOR NAME IN RANGE LPAREN NUMBER RPAREN COLON NEWLINE INDENT statement_list DEDENT .
+
+    NEWLINE         reduce using rule 16 (compound_stmt -> FOR NAME IN RANGE LPAREN NUMBER RPAREN COLON NEWLINE INDENT statement_list DEDENT .)
+    IF              reduce using rule 16 (compound_stmt -> FOR NAME IN RANGE LPAREN NUMBER RPAREN COLON NEWLINE INDENT statement_list DEDENT .)
+    ELSE            reduce using rule 16 (compound_stmt -> FOR NAME IN RANGE LPAREN NUMBER RPAREN COLON NEWLINE INDENT statement_list DEDENT .)
+    FOR             reduce using rule 16 (compound_stmt -> FOR NAME IN RANGE LPAREN NUMBER RPAREN COLON NEWLINE INDENT statement_list DEDENT .)
+    NAME            reduce using rule 16 (compound_stmt -> FOR NAME IN RANGE LPAREN NUMBER RPAREN COLON NEWLINE INDENT statement_list DEDENT .)
+    PRINT           reduce using rule 16 (compound_stmt -> FOR NAME IN RANGE LPAREN NUMBER RPAREN COLON NEWLINE INDENT statement_list DEDENT .)
+    $end            reduce using rule 16 (compound_stmt -> FOR NAME IN RANGE LPAREN NUMBER RPAREN COLON NEWLINE INDENT statement_list DEDENT .)
+    DEDENT          reduce using rule 16 (compound_stmt -> FOR NAME IN RANGE LPAREN NUMBER RPAREN COLON NEWLINE INDENT statement_list DEDENT .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for EQEQ in state 30 resolved as shift
